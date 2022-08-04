@@ -1,0 +1,277 @@
+[
+  {
+    "inputs": [
+      { "internalType": "address", "name": "nftAddress", "type": "address" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+    ],
+    "name": "AlreadyListedForRent",
+    "type": "error"
+  },
+  { "inputs": [], "name": "DurationMustBeAtleastOneDay", "type": "error" },
+  {
+    "inputs": [],
+    "name": "DurationMustBeLessThanOrEqualToAllowedDuration",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "nftAddress", "type": "address" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+    ],
+    "name": "ItemAlreadyRented",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "nftAddress", "type": "address" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      { "internalType": "address", "name": "user", "type": "address" }
+    ],
+    "name": "ItemNotRentedByUser",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "nftAddress", "type": "address" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+    ],
+    "name": "NotListedForRent",
+    "type": "error"
+  },
+  { "inputs": [], "name": "NotOwner", "type": "error" },
+  { "inputs": [], "name": "PriceMustBeAboveZero", "type": "error" },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "nftAddress", "type": "address" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      { "internalType": "uint256", "name": "price", "type": "uint256" }
+    ],
+    "name": "PriceNotMet",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      { "internalType": "address", "name": "spender", "type": "address" },
+      { "internalType": "address", "name": "nftAddress", "type": "address" }
+    ],
+    "name": "cantRentOwnedNfts",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "seller",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "nftAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "ItemDeListed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "seller",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "nftAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "pricePerDay",
+        "type": "uint256"
+      }
+    ],
+    "name": "ItemListedForRent",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "renter",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "nftAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "duration",
+        "type": "uint256"
+      }
+    ],
+    "name": "ItemRented",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "renter",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "nftAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "duration",
+        "type": "uint256"
+      }
+    ],
+    "name": "ItemReturned",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "allNftContractListings",
+    "outputs": [
+      { "internalType": "uint256", "name": "price", "type": "uint256" },
+      { "internalType": "address", "name": "seller", "type": "address" },
+      { "internalType": "address", "name": "renter", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "nftContractAddress",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "allowedDuration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "rentedDuration",
+        "type": "uint256"
+      },
+      { "internalType": "bool", "name": "isRented", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      { "internalType": "address", "name": "nftAddress", "type": "address" }
+    ],
+    "name": "delistItemForRent",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      { "internalType": "uint256", "name": "price", "type": "uint256" },
+      { "internalType": "address", "name": "nftAddress", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "allowedRentDuration",
+        "type": "uint256"
+      }
+    ],
+    "name": "listItemForRent",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "duration", "type": "uint256" },
+      {
+        "internalType": "address",
+        "name": "nftContractAddress",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+    ],
+    "name": "rentItem",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "nftContractAddress",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+    ],
+    "name": "returnNftFromRent",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

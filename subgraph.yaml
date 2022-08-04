@@ -1,0 +1,32 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: lyncMarketplace
+    network: rinkeby
+    source:
+      address: "0xf338326a007CfF80bC96551749d131570505FAC9"
+      abi: lyncMarketplace
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ItemDeListed
+        - ItemListedForRent
+        - ItemRented
+        - ItemReturned
+      abis:
+        - name: lyncMarketplace
+          file: ./abis/lyncMarketplace.json
+      eventHandlers:
+        - event: ItemDeListed(indexed address,indexed address,indexed uint256)
+          handler: handleItemDeListed
+        - event: ItemListedForRent(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleItemListedForRent
+        - event: ItemRented(indexed address,indexed address,indexed uint256,uint256,uint256)
+          handler: handleItemRented
+        - event: ItemReturned(indexed address,indexed address,indexed uint256,uint256,uint256)
+          handler: handleItemReturned
+      file: ./src/lync-marketplace.ts
