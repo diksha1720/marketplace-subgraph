@@ -8,9 +8,9 @@ import {
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
 import { ItemDeListed } from "../generated/schema"
-import { ItemDeListed as ItemDeListedEvent } from "../generated/lyncMarketplace/lyncMarketplace"
-import { handleItemDeListed } from "../src/lync-marketplace"
-import { createItemDeListedEvent } from "./lync-marketplace-utils"
+import { ItemDeListed as ItemDeListedEvent } from "../generated/Marketplace/Marketplace"
+import { handleItemDeListed } from "../src/Marketplace"
+import { createItemDeListedEvent } from "./Marketplace-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0

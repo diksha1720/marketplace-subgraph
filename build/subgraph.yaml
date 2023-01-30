@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Marketplace
@@ -20,7 +20,7 @@ dataSources:
         - ItemReturned
       abis:
         - name: Marketplace
-          file: ./abis/Marketplace.json
+          file: Marketplace\abis\Marketplace.json
       eventHandlers:
         - event: ItemDeListed(indexed address,indexed address,indexed uint256)
           handler: handleItemDeListed
@@ -30,4 +30,4 @@ dataSources:
           handler: handleItemRented
         - event: ItemReturned(indexed address,indexed address,indexed uint256,uint256,uint256)
           handler: handleItemReturned
-      file: ./src/lync-marketplace.ts
+      file: Marketplace\Marketplace.wasm

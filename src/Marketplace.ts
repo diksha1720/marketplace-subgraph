@@ -3,7 +3,7 @@ import {
   ItemListedForRent as ItemListedForRentEvent,
   ItemRented as ItemRentedEvent,
   ItemReturned as ItemReturnedEvent
-} from "../generated/lyncMarketplace/lyncMarketplace"
+} from "../generated/Marketplace/Marketplace"
 import {
   ItemDeListed,
   ItemListedForRent,

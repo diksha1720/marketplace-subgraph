@@ -1,0 +1,32 @@
+type ItemDeListed @entity {
+  id: ID!
+  seller: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+}
+
+type ItemListedForRent @entity {
+  id: ID!
+  seller: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  pricePerDay: BigInt! # uint256
+}
+
+type ItemRented @entity {
+  id: ID!
+  renter: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  duration: BigInt! # uint256
+}
+
+type ItemReturned @entity {
+  id: ID!
+  renter: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  duration: BigInt! # uint256
+}

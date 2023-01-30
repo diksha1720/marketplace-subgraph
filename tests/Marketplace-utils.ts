@@ -5,7 +5,7 @@ import {
   ItemListedForRent,
   ItemRented,
   ItemReturned
-} from "../generated/lyncMarketplace/lyncMarketplace"
+} from "../generated/Marketplace/Marketplace"
 
 export function createItemDeListedEvent(
   seller: Address,
